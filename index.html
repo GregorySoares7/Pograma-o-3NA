@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão Financeira</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h1>Gestão Financeira</h1>
+
+    <!-- Seção de Cadastro -->
+    <section id="cadastro">
+        <h2>Cadastro de Receitas e Despesas</h2>
+        <div class="input-group">
+            <label for="month">Mês</label>
+            <select id="month">
+                <option value="0">Janeiro</option>
+                <option value="1">Fevereiro</option>
+                <option value="2">Março</option>
+                <option value="3">Abril</option>
+                <option value="4">Maio</option>
+                <option value="5">Junho</option>
+                <option value="6">Julho</option>
+                <option value="7">Agosto</option>
+                <option value="8">Setembro</option>
+                <option value="9">Outubro</option>
+                <option value="10">Novembro</option>
+                <option value="11">Dezembro</option>
+            </select>
+
+            <label for="year">Ano</label>
+            <input type="number" id="year" placeholder="Ex: 2024" min="2000" max="3000">
+        </div>
+        
+        <label for="description">Descrição</label>
+        <input type="text" id="description" placeholder="Descrição">
+        
+        <label for="type">Tipo</label>
+        <select id="type">
+            <option value="income">Receita</option>
+            <option value="expense">Despesa</option>
+        </select>
+        
+        <label for="amount">Valor (R$)</label>
+        <input type="number" id="amount" placeholder="Ex: 1000">
+        
+        <button id="addTransactionBtn">Adicionar Transação</button>
+    </section>
+
+    <!-- Seção da Planilha Dinâmica -->
+    <section id="planilha">
+        <h2>Planilha Dinâmica</h2>
+        <table id="dynamicTable">
+            <thead>
+                <tr>
+                    <th>Mês</th>
+                    <th>Ano</th>
+                    <th>Descrição</th>
+                    <th>Tipo</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Conteúdo será inserido dinamicamente -->
+            </tbody>
+        </table>
+        <button onclick="exportSpreadsheet()">Exportar Planilha</button>
+    </section>
+
+    <!-- Seção dos Gráficos -->
+    <section id="graficos">
+        <h2>Gráficos</h2>
+
+        <label for="graphMonth">Selecionar Mês</label>
+        <select id="graphMonth">
+            <option value="0">Janeiro</option>
+            <option value="1">Fevereiro</option>
+            <option value="2">Março</option>
+            <option value="3">Abril</option>
+            <option value="4">Maio</option>
+            <option value="5">Junho</option>
+            <option value="6">Julho</option>
+            <option value="7">Agosto</option>
+            <option value="8">Setembro</option>
+            <option value="9">Outubro</option>
+            <option value="10">Novembro</option>
+            <option value="11">Dezembro</option>
+        </select>
+
+        <label for="graphYear">Selecionar Ano</label>
+        <input type="number" id="graphYear" placeholder="Ex: 2024" min="2000" max="3000">
+
+        <button id="updateGraphsBtn">Atualizar Gráficos</button>
+
+        <!-- Gráfico de Pizza para o Balanço Mensal -->
+        <h3>Gráfico Mensal</h3>
+        <canvas id="monthlyChart"></canvas>
+
+        <!-- Gráfico de Linha para o Balanço Anual -->
+        <h3>Gráfico Anual</h3>
+        <canvas id="annualChart"></canvas>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
